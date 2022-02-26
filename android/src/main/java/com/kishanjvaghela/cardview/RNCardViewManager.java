@@ -7,12 +7,13 @@ import com.facebook.react.uimanager.ThemedReactContext;
 import com.facebook.react.uimanager.ViewGroupManager;
 import com.facebook.react.uimanager.annotations.ReactProp;
 import com.facebook.react.views.view.ReactViewGroup;
+import com.meetsl.scardview.SCardView;
 
 /**
  * Created by kishan on 26/4/17.
  */
 
-public class RNCardViewManager extends ViewGroupManager<RNCardView> {
+public class RNCardViewManager extends ViewGroupManager<SCardView> {
 
     @Override
     public String getName() {
@@ -20,45 +21,50 @@ public class RNCardViewManager extends ViewGroupManager<RNCardView> {
     }
 
     @Override
-    public RNCardView createViewInstance(ThemedReactContext reactContext) {
-        RNCardView cardView = new RNCardView(reactContext);
+    public SCardView createViewInstance(ThemedReactContext reactContext) {
+        SCardView cardView = new SCardView(reactContext);
         ReactViewGroup reactViewGroup = new ReactViewGroup(reactContext);
         cardView.addView(reactViewGroup);
         return cardView;
     }
 
     @ReactProp(name = "cornerRadius", defaultFloat = 0f)
-    public void setCornerRadius(RNCardView view, float cornerRadius) {
-        view.setRnCornerRadius(PixelUtil.toPixelFromDIP(cornerRadius));
+    public void setCornerRadius(SCardView view, float cornerRadius) {
+        view.setRadius(PixelUtil.toPixelFromDIP(cornerRadius));
     }
 
     @ReactProp(name = "cardElevation", defaultFloat = 0f)
-    public void setCardElevation(RNCardView view, float elevation) {
-        view.setRnElevation(elevation);
+    public void setCardElevation(SCardView view, float elevation) {
+        view.setCardElevation(elevation);
     }
 
     @ReactProp(name = "cardMaxElevation", defaultFloat = 0f)
-    public void setCardMaxElevation(RNCardView view, float elevation) {
-        view.setRnMaxElevation(elevation);
+    public void setCardMaxElevation(SCardView view, float elevation) {
+        view.setMaxCardElevation(elevation);
     }
 
     @ReactProp(name = "cornerOverlap")
-    public void setPreventCornerOverlap(RNCardView view, boolean overlap) {
+    public void setPreventCornerOverlap(SCardView view, boolean overlap) {
         view.setPreventCornerOverlap(overlap);
     }
 
     @ReactProp(name = "useCompatPadding")
-    public void setUseCompatPadding(RNCardView view, boolean padding) {
+    public void setUseCompatPadding(SCardView view, boolean padding) {
         view.setUseCompatPadding(padding);
     }
 
     @ReactProp(name = "backgroundColor")
-    public void setCardBackgroundColor(RNCardView view, int color) {
-        view.setRnBackgroundColor(color);
+    public void setCardBackgroundColor(SCardView view, int color) {
+        view.setCardBackgroundColor(color);
+    }
+
+    @ReactProp(name = "shadowColor")
+    public void setCardShadowColor(SCardView view, int color) {
+        view.setCardShadowColor(color, color);
     }
 
     @Override
-    public View getChildAt(RNCardView parent, int index) {
+    public View getChildAt(SCardView parent, int index) {
         View content = parent.getChildAt(0);
         if (content != null && content instanceof ReactViewGroup) {
             return ((ReactViewGroup) content).getChildAt(index);
@@ -67,7 +73,7 @@ public class RNCardViewManager extends ViewGroupManager<RNCardView> {
     }
 
     @Override
-    public int getChildCount(RNCardView parent) {
+    public int getChildCount(SCardView parent) {
         View content = parent.getChildAt(0);
         if (content != null && content instanceof ReactViewGroup) {
             return ((ReactViewGroup) content).getChildCount();
@@ -76,7 +82,7 @@ public class RNCardViewManager extends ViewGroupManager<RNCardView> {
     }
 
     @Override
-    public void addView(RNCardView parent, View child, int index) {
+    public void addView(SCardView parent, View child, int index) {
         View content = parent.getChildAt(0);
         if (content != null && content instanceof ReactViewGroup) {
             ((ReactViewGroup) content).addView(child, index);
@@ -84,7 +90,7 @@ public class RNCardViewManager extends ViewGroupManager<RNCardView> {
     }
 
     @Override
-    public void removeViewAt(RNCardView parent, int index) {
+    public void removeViewAt(SCardView parent, int index) {
         View content = parent.getChildAt(0);
         if (content != null && content instanceof ReactViewGroup) {
             ((ReactViewGroup) content).removeViewAt(index);
@@ -92,7 +98,7 @@ public class RNCardViewManager extends ViewGroupManager<RNCardView> {
     }
 
     @Override
-    public void removeAllViews(RNCardView parent) {
+    public void removeAllViews(SCardView parent) {
         View content = parent.getChildAt(0);
         if (content != null && content instanceof ReactViewGroup) {
             ((ReactViewGroup) content).removeAllViews();
