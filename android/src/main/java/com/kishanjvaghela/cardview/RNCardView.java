@@ -3,6 +3,7 @@ package com.kishanjvaghela.cardview;
 import android.content.Context;
 import androidx.cardview.widget.CardView;
 import android.util.AttributeSet;
+import com.meetsl.scardview.SCardView;
 
 import com.facebook.react.uimanager.PixelUtil;
 
@@ -10,7 +11,7 @@ import com.facebook.react.uimanager.PixelUtil;
  * Created by kishan on 26/4/17.
  */
 
-public class RNCardView extends CardView {
+public class RNCardView extends SCardView {
 
     public RNCardView(Context context) {
         super(context);
