@@ -42,5 +42,6 @@ repositories {
 dependencies {
     implementation 'com.facebook.react:react-native:+'
     implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'io.github.meetsl:SCardView:1.2'
 }
 
